@@ -530,9 +530,7 @@ class PaymentController extends Controller
             $logPath = storage_path('logs/payments/' . date('Ymd') . '.log');
             $content = date('d/m/Y H:i:s') . ' Order: ' . $referenceId . " Begins\n";
             $content .= date('d/m/Y H:i:s') . ' POST: ' . $ordersURL . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Headers: ' . json_encode($headers) . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Postfields: ' . json_encode($data) . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode($response) . "\n\n";
+            $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode(paymentLogSummary($result)) . "\n\n";
             writeFile($logPath, $content);
 
             if(empty($result->error_messages))
@@ -768,9 +766,7 @@ class PaymentController extends Controller
             $logPath = storage_path('logs/payments/' . date('Ymd') . '.log');
             $content = date('d/m/Y H:i:s') . ' Order: ' . $referenceId . " Begins\n";
             $content .= date('d/m/Y H:i:s') . ' POST: ' . $ordersURL . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Headers: ' . json_encode($headers) . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Postfields: ' . json_encode($data) . "\n";
-            $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode($response) . "\n\n";
+            $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode(paymentLogSummary($result)) . "\n\n";
             writeFile($logPath, $content);
 
             if(empty($result->error_messages))
