@@ -58,10 +58,10 @@ class PaymentController extends Controller
         if(empty($result->error_messages))
         {
             $transactionId = $result->id;
-            $chargeId = $result->charges{0}->id;
-            $paymentType = $result->charges{0}->payment_method->type;
-            $message = $result->charges{0}->payment_response->message;
-            $status = $result->charges{0}->status;
+            $chargeId = $result->charges[0]->id;
+            $paymentType = $result->charges[0]->payment_method->type;
+            $message = $result->charges[0]->payment_response->message;
+            $status = $result->charges[0]->status;
 
             $updatePayment = Payment::findPayment($paymentId);
 
@@ -83,7 +83,7 @@ class PaymentController extends Controller
                 {
                     //ATUALIZAR A TABELA DE PEDIDOS
                     $updatePayment->status = 'Pago';
-                    $updatePayment->paid_at = $result->charges{0}->paid_at;
+                    $updatePayment->paid_at = $result->charges[0]->paid_at;
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA

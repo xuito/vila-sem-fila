@@ -536,11 +536,11 @@ class PaymentController extends Controller
             if(empty($result->error_messages))
             {
                 $transactionId = $result->id;
-                $chargeId = $result->charges{0}->id;
-                $installments = $result->charges{0}->payment_method->installments;
-                $paymentType = $result->charges{0}->payment_method->type;
-                $message = $result->charges{0}->payment_response->message;
-                $status = $result->charges{0}->status;
+                $chargeId = $result->charges[0]->id;
+                $installments = $result->charges[0]->payment_method->installments;
+                $paymentType = $result->charges[0]->payment_method->type;
+                $message = $result->charges[0]->payment_response->message;
+                $status = $result->charges[0]->status;
 
                 $updatePayment = Payment::findPayment($paymentId);
                 $updatePayment->transaction_id = $transactionId;
@@ -554,7 +554,7 @@ class PaymentController extends Controller
                 {
                     //ATUALIZAR A TABELA DE PEDIDOS
                     $updatePayment->status = 'Pago';
-                    $updatePayment->paid_at = $result->charges{0}->paid_at;
+                    $updatePayment->paid_at = $result->charges[0]->paid_at;
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
@@ -582,7 +582,7 @@ class PaymentController extends Controller
                     $updatePayment->status = 'Em análise';
                     $updatePayment->save();
 
-                    //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
+                    //UPDATE STATUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
                     $updatePaymentStatus = $this->updatePaymentStatus($paymentHash, $paymentType, 2);
                     $updateRecheckStatus = $this->updateRecheckStatus($paymentHash, $paymentType, 1);
 

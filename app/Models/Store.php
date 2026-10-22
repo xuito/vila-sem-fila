@@ -56,7 +56,7 @@ class Store extends Model
         return $store;
     }
 
-    protected static function getStoreParameters($slug)
+    public static function getStoreParameters($slug)
     {
         $store = Store::where('slug', $slug)
             ->first();
@@ -64,7 +64,7 @@ class Store extends Model
         return $store;
     }
 
-    protected static function getStoreParametersByAbbr($abbr)
+    public static function getStoreParametersByAbbr($abbr)
     {
         $store = Store::where('abbr', $abbr)
             ->first();
