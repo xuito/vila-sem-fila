@@ -29,21 +29,21 @@ class Payment extends Model
         'paid_at'
     ];
 
-    protected static function findPayment($paymentId)
+    public static function findPayment($paymentId)
     {
-        $payment = Payment::all()->find($paymentId);
+        $payment = Payment::find($paymentId);
 
         return $payment;
     }
 
-    protected static function getPayments()
+    public static function getPayments()
     {
         $payment = Payment::all();
 
         return $payment;
     }
 
-    protected static function getPayment($hash)
+    public static function getPayment($hash)
     {
         $payment = Payment::where('hash', $hash)
             ->first();

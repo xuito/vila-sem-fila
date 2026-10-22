@@ -250,6 +250,37 @@
         return $destination;
     }
 
+    //REGISTRA SOMENTE CAMPOS PERMITIDOS, SEM DADOS PESSOAIS OU CREDENCIAIS.
+    function paymentLogSummary($result)
+    {
+        if (!is_object($result)) {
+            return ['response_valid' => false];
+        }
+
+        $summary = [
+            'response_valid' => true,
+            'id' => $result->id ?? null,
+            'reference_id' => $result->reference_id ?? null,
+            'charges' => [],
+            'error_codes' => [],
+        ];
+
+        foreach (($result->charges ?? []) as $charge) {
+            $summary['charges'][] = [
+                'id' => $charge->id ?? null,
+                'status' => $charge->status ?? null,
+                'payment_type' => $charge->payment_method->type ?? null,
+                'response_code' => $charge->payment_response->code ?? null,
+            ];
+        }
+
+        foreach (($result->error_messages ?? []) as $error) {
+            $summary['error_codes'][] = $error->code ?? null;
+        }
+
+        return $summary;
+    }
+
     //CRIA ARQUIVO DE TEXTO NO CAMINHO INDICADO
     function writeFile($filePath, $content)
     {

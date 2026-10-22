@@ -52,17 +52,16 @@ class PaymentController extends Controller
         $logPath = storage_path('logs/payments/' . date('Ymd') . '.log');
         $content = date('d/m/Y H:i:s') . ' Order: ' . $decodedJson->reference_id . " Begins\n";
         $content .= date('d/m/Y H:i:s') . ' POST: ' . $transactionURL . "\n";
-        $content .= date('d/m/Y H:i:s') . ' Headers: ' . json_encode($headers) . "\n";
-        $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode($response) . "\n\n";
+        $content .= date('d/m/Y H:i:s') . ' Response: ' . json_encode(paymentLogSummary($result)) . "\n\n";
         writeFile($logPath, $content);
 
         if(empty($result->error_messages))
         {
             $transactionId = $result->id;
-            $chargeId = $result->charges{0}->id;
-            $paymentType = $result->charges{0}->payment_method->type;
-            $message = $result->charges{0}->payment_response->message;
-            $status = $result->charges{0}->status;
+            $chargeId = $result->charges[0]->id;
+            $paymentType = $result->charges[0]->payment_method->type;
+            $message = $result->charges[0]->payment_response->message;
+            $status = $result->charges[0]->status;
 
             $updatePayment = Payment::findPayment($paymentId);
 
@@ -84,7 +83,7 @@ class PaymentController extends Controller
                 {
                     //ATUALIZAR A TABELA DE PEDIDOS
                     $updatePayment->status = 'Pago';
-                    $updatePayment->paid_at = $result->charges{0}->paid_at;
+                    $updatePayment->paid_at = $result->charges[0]->paid_at;
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA

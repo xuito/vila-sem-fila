@@ -210,11 +210,11 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active text-dark fw-bold" id="credit-card-tab" data-bs-toggle="tab" data-bs-target="#credit-card-body" type="button" role="tab" aria-controls="credit-card-body" aria-selected="true">Cartão de Crédito</button>
                             </li>
-                            <!--
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link text-dark fw-bold" id="pix-tab" data-bs-toggle="tab" data-bs-target="#pix-body" type="button" role="tab" aria-controls="pix-body" aria-selected="false">Pagar com PIX</button>
                             </li>
-                            -->
+
                         </ul>
                         <div class="tab-content w-100 m-auto d-flex justify-content-center py-4" id="myTabContent">
                             <div class="tab-pane fade show active w-100" id="credit-card-body" role="tabpanel" aria-labelledby="credit-card-tab">
@@ -286,7 +286,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <!--
+
                             <div class="tab-pane fade w-100" id="pix-body" role="tabpanel" aria-labelledby="pix-tab">
                                 <div id="pix">
                                     <div>
@@ -306,7 +306,7 @@
                                     </form>
                                 </div>
                             </div>
-                            -->
+
                         </div>
                     </div>
                 </div>
