@@ -21,7 +21,7 @@ class BillController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/operacao';
+        $url = 'https://' . $serverIP . '/api/sem-fila/operacao';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -36,7 +36,7 @@ class BillController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/cliente';
+        $url = 'https://' . $serverIP . '/api/sem-fila/cliente';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('clientId' => $clientId);
 

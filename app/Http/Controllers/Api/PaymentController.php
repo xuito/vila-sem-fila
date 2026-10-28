@@ -87,14 +87,14 @@ class PaymentController extends Controller
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-status-pagamento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/atualizar-status-pagamento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => 3);
 
                     $response = curlPost($url, $postfields, false, $headers);
 
                     //DÁ BAIXA NO COLIBRI
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/pagamento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/pagamento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('ticket' => $ticket, 'lockId' => $lockId, 'total' => $amount);
 
@@ -109,7 +109,7 @@ class PaymentController extends Controller
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-status-pagamento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/atualizar-status-pagamento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => 2);
 
@@ -124,21 +124,21 @@ class PaymentController extends Controller
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-status-pagamento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/atualizar-status-pagamento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => 7);
 
                     $response = curlPost($url, $postfields, false, $headers);
 
                     //REMOVER BLOQUEIO DE RECEBIMENTO
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/remover-bloqueio-recebimento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/remover-bloqueio-recebimento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('ticket' => $ticket, 'lockId' => $lockId);
 
                     $response = curlPost($url, $postfields, false, $headers);
 
                     //REABRIR CONTA
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/reabrir-conta';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/reabrir-conta';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('ticket' => $ticket);
 
@@ -153,7 +153,7 @@ class PaymentController extends Controller
                     $updatePayment->save();
 
                     //UPDATE STAUS DE PAGAMENTO NA TABELA LOCAL DA LOJA
-                    $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-status-pagamento';
+                    $url = 'https://' . $serverIP  . '/api/sem-fila/atualizar-status-pagamento';
                     $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
                     $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => 7);
 
