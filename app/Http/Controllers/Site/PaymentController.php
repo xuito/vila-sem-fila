@@ -26,7 +26,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/totais';
+        $url = 'https://' . $serverIP . '/api/sem-fila/totais';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -41,7 +41,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/operacao';
+        $url = 'https://' . $serverIP . '/api/sem-fila/operacao';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -56,7 +56,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/cliente';
+        $url = 'https://' . $serverIP . '/api/sem-fila/cliente';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('clientId' => $clientId);
 
@@ -71,7 +71,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/fechar-conta';
+        $url = 'https://' . $serverIP . '/api/sem-fila/fechar-conta';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -86,7 +86,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/bloquear-recebimento';
+        $url = 'https://' . $serverIP . '/api/sem-fila/bloquear-recebimento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -101,7 +101,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/pagamento';
+        $url = 'https://' . $serverIP . '/api/sem-fila/pagamento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket, 'lockId' => $lockId, 'total' => $amount);
 
@@ -116,7 +116,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/remover-bloqueio-recebimento';
+        $url = 'https://' . $serverIP . '/api/sem-fila/remover-bloqueio-recebimento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket, 'lockId' => $lockId);
 
@@ -129,7 +129,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/reabrir-conta';
+        $url = 'https://' . $serverIP . '/api/sem-fila/reabrir-conta';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
 
@@ -156,7 +156,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/salvar-pagamento';
+        $url = 'https://' . $serverIP . '/api/sem-fila/salvar-pagamento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array(
                 'orderId' => $paymentId,
@@ -183,7 +183,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-status-pagamento';
+        $url = 'https://' . $serverIP . '/api/sem-fila/atualizar-status-pagamento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => $status);
 
@@ -196,7 +196,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/atualizar-recheck';
+        $url = 'https://' . $serverIP . '/api/sem-fila/atualizar-recheck';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('orderHash' => $paymentHash, 'payment_type' => $paymentType, 'status' => $status);
 
@@ -209,7 +209,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/pagamento-hash';
+        $url = 'https://' . $serverIP . '/api/sem-fila/pagamento-hash';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('orderHash' => $paymentHash);
 
@@ -224,7 +224,7 @@ class PaymentController extends Controller
         $serverPort = Config::get('constants.SERVER_PORT');
         $serverToken = Config::get('constants.SERVER_TOKEN');
 
-        $url = 'http://' . $serverIP . ':' . $serverPort . '/api/sem-fila/nota-fiscal';
+        $url = 'https://' . $serverIP . '/api/sem-fila/nota-fiscal';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('orderHash' => $paymentHash, 'operationId' => $operationId, 'clientName' => $clientName, 'cpf' => $cpf);
 
