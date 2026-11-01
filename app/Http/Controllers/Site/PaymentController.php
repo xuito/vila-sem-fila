@@ -80,7 +80,7 @@ class PaymentController extends Controller
         return $response;
     }
 
-    protected function blockReceipt($ticket)
+    protected function blockReceipt($ticket, $timeout = null)
 	{
         $serverIP = Config::get('constants.SERVER_IP');
         $serverPort = Config::get('constants.SERVER_PORT');
@@ -89,6 +89,10 @@ class PaymentController extends Controller
         $url = 'https://' . $serverIP . '/api/sem-fila/bloquear-recebimento';
         $headers = array('Accept: application/json', 'Authorization: Bearer ' . $serverToken);
         $postfields = array('ticket' => $ticket);
+
+        if ($timeout !== null) {
+            $postfields['timeout'] = $timeout;
+        }
 
         $response = curlPost($url, $postfields, false, $headers);
 
@@ -680,7 +684,7 @@ class PaymentController extends Controller
             }
 
             //BLOQUEAR O TICKET PARA NÃO RECEBER MAIS CONSUMOS DURANTE O PAGAMENTO
-            $response = $this->blockReceipt($ticket);
+            $response = $this->blockReceipt($ticket, 300);
 
             //RETORNA ERRO NO CASO DA FICHA ESTAR BLOQUEADA
             if($response->status->codigo != '200' || empty($response->dados))
