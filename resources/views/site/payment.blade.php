@@ -28,8 +28,8 @@
                     //console.log(response);
                     if(response === 'Pago')
                     {
-                        var url = "{{ route('site.payment.response', ['status' => 'Pago', 'paymentHash' => '"+paymentHash+"', 'message' => 'Conta encerrada com sucesso!']) }}";
-                        //var url = "https://vilasemfila.com.br/franca/retorno/Pago/"+paymentHash+"/Conta encerrada com sucesso!";
+                        var url = {{ Illuminate\Support\Js::from(route('site.payment.response', ['status' => 'success', 'paymentHash' => 'PAYMENT_HASH', 'message' => 'Conta encerrada com sucesso!'])) }};
+                        url = url.replace('PAYMENT_HASH', encodeURIComponent(paymentHash));
 
                         window.location.href = url;
                     }
@@ -210,11 +210,9 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active text-dark fw-bold" id="credit-card-tab" data-bs-toggle="tab" data-bs-target="#credit-card-body" type="button" role="tab" aria-controls="credit-card-body" aria-selected="true">Cartão de Crédito</button>
                             </li>
-                            <!--
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link text-dark fw-bold" id="pix-tab" data-bs-toggle="tab" data-bs-target="#pix-body" type="button" role="tab" aria-controls="pix-body" aria-selected="false">Pagar com PIX</button>
                             </li>
-                            -->
                         </ul>
                         <div class="tab-content w-100 m-auto d-flex justify-content-center py-4" id="myTabContent">
                             <div class="tab-pane fade show active w-100" id="credit-card-body" role="tabpanel" aria-labelledby="credit-card-tab">
@@ -286,7 +284,6 @@
                                     </div>
                                 </form>
                             </div>
-                            <!--
                             <div class="tab-pane fade w-100" id="pix-body" role="tabpanel" aria-labelledby="pix-tab">
                                 <div id="pix">
                                     <div>
@@ -306,7 +303,6 @@
                                     </form>
                                 </div>
                             </div>
-                            -->
                         </div>
                     </div>
                 </div>
